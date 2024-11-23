@@ -77,7 +77,7 @@ const CatalogPage: React.FC = () => {
   };
 
   return (
-    <div className="bg-black min-h-screen p-6">
+    <div className="bg-gray-900 min-h-screen p-6">
       {selectedCut ? (
         <Detalhes cut={selectedCut} onClose={handleCloseDetail} />
       ) : (
@@ -97,7 +97,7 @@ const CatalogPage: React.FC = () => {
               <div
                 key={cut.id}
                 onClick={() => handleCutClick(cut)}
-                className="flex flex-col sm:flex-row items-center sm:items-start px-4 py-3 border-2 rounded-2xl shadow-md hover:bg-gray-700 transition transform hover:scale-105 cursor-pointer"
+                className="flex flex-col sm:flex-row items-center sm:items-start px-4 py-3 border-2 border-[#c0a98a] rounded-2xl shadow-md hover:bg-gray-700 transition transform hover:scale-105 cursor-pointer"
               >
                 <div className="flex-shrink-0">
                   <img
