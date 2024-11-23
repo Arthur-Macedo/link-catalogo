@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { IoMdArrowRoundBack } from 'react-icons/io';
 import { Link } from 'react-router-dom';
-import Detalhes from "../../components/Cortes/detalhes"; // Ajuste o caminho conforme necessário
-import Degrade from "../../assets/degrade.jpg";
-import Pigmentacao from "../../assets/pigmentacao.jpg";
-import Style from "../../assets/style.jpg";
-import Nevou from "../../assets/nevou.jpg";
-import Reflexo from "../../assets/reflexo.jpg";
+import Detalhes from "../../components/Cortes/detalhes";
+import Degrade from "../../assets/degrade.jpeg";
+import Barba from "../../assets/barba.jpeg";
+import Style from "../../assets/style.jpeg";
+import Moica from "../../assets/moica.jpeg";
+import Americano from "../../assets/americano.jpeg";
+import Social from "../../assets/social.jpeg";
 
-// Definição de tipos para os cortes
 interface Cut {
   id: number;
   name: string;
@@ -17,7 +17,6 @@ interface Cut {
   description: string;
 }
 
-// Dados dos cortes
 const cuts: Cut[] = [
   {
     id: 1,
@@ -28,17 +27,17 @@ const cuts: Cut[] = [
   },
   {
     id: 2,
-    name: "Nevou",
-    price: "R$ 90,00",
-    img: Nevou,
-    description: "Estilo nevado que combina cor e corte precisos.",
+    name: "Moica",
+    price: "R$ 20,00",
+    img: Moica,
+    description: "Estilo moica que combina cor e corte precisos.",
   },
   {
     id: 3,
-    name: "Degradê com pigmentação",
-    price: "R$ 35,00",
-    img: Pigmentacao,
-    description: "Degradê com pigmentação para realçar o visual.",
+    name: "Degradê com Barba",
+    price: "R$ 30,00",
+    img: Barba,
+    description: "Degradê com barba para realçar o visual.",
   },
   {
     id: 4,
@@ -49,23 +48,23 @@ const cuts: Cut[] = [
   },
   {
     id: 5,
-    name: "Reflexo alinhado",
-    price: "R$ 75,00",
-    img: Reflexo,
-    description: "Reflexos alinhados para um visual elegante e sofisticado.",
+    name: "Americano",
+    price: "R$ 20,00",
+    img: Americano,
+    description: "Americano para um visual elegante e sofisticado.",
   },
   {
-    id: 6, // Corrigido o ID duplicado (anteriormente o ID de "Degradê" estava sendo repetido)
+    id: 6, 
     name: "Social",
     price: "R$ 20,00",
-    img: Degrade,
+    img: Social,
     description: "Um corte moderno que destaca autenticidade.",
   },
 ];
 
 const CatalogPage: React.FC = () => {
-  const [selectedCut, setSelectedCut] = useState<Cut | null>(null); // Definindo o tipo de `selectedCut`
-  const [scrollPosition, setScrollPosition] = useState<number>(0); // Definindo o tipo de `scrollPosition`
+  const [selectedCut, setSelectedCut] = useState<Cut | null>(null);
+  const [scrollPosition, setScrollPosition] = useState<number>(0);
 
   const handleCutClick = (cut: Cut) => {
     setScrollPosition(window.scrollY);
@@ -84,7 +83,7 @@ const CatalogPage: React.FC = () => {
       ) : (
         <>
           <div className="flex items-center space-x-6 p-4">
-            <Link to="/" className="text-orange-300 hover:text-orange-400">
+            <Link to="/" className="text-[#c58a4f] hover:text-orange-400">
               <IoMdArrowRoundBack size={26} />
             </Link>
 
@@ -93,26 +92,27 @@ const CatalogPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Grid de cortes */}
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {cuts.map((cut) => (
               <div
                 key={cut.id}
                 onClick={() => handleCutClick(cut)}
-                className="flex flex-col px-1 py-2 border-2 rounded-2xl shadow-md hover:bg-gray-700 transition transform hover:scale-105 cursor-pointer"
+                className="flex flex-col sm:flex-row items-center sm:items-start px-4 py-3 border-2 rounded-2xl shadow-md hover:bg-gray-700 transition transform hover:scale-105 cursor-pointer"
               >
-                <div className="flex justify-center">
+                <div className="flex-shrink-0">
                   <img
                     src={cut.img}
                     alt={cut.name}
-                    className="w-64 h-48 object-cover rounded-lg mt-1 mb-4"
+                    className="w-64 h-48 object-cover rounded-lg sm:w-40 sm:h-28 lg:w-48 lg:h-32"
                   />
                 </div>
 
-                <div className="ml-10">
-                  <h2 className="text-white text-xl font-semibold">{cut.name}</h2>
+                <div className="mt-4 ml-6 sm:mt-0 sm:ml-4 lg:ml-6 flex-1">
+                  <h2 className="text-white text-xl font-semibold">
+                    {cut.name}
+                  </h2>
                   <p className="text-gray-400 text-lg">{cut.price}</p>
-                  <p className="text-gray-300 mt-4">{cut.description}</p>
+                  <p className="text-gray-300 mt-2">{cut.description}</p>
                 </div>
               </div>
             ))}
